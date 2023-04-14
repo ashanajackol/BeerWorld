@@ -44,8 +44,8 @@ fun BeerItem(
                 model = beer.imageUrl,
                 contentDescription = beer.name,
                 modifier = modifier
-                    .height(150.dp)
                     .weight(1f)
+                    .height(150.dp)
             )
             Spacer(modifier = modifier.width(16.dp))
             Column(
@@ -63,13 +63,11 @@ fun BeerItem(
                     text = beer.tagLine,
                     fontStyle = FontStyle.Italic,
                     color = Color.LightGray,
-                    modifier = modifier
+                    modifier = modifier.fillMaxWidth()
                 )
                 Spacer(modifier = modifier.height(8.dp))
                 Text(
                     text = beer.description,
-                    style = MaterialTheme.typography.h6,
-                    fontSize = 14.sp,
                     modifier = modifier.fillMaxWidth()
                 )
                 Spacer(modifier = modifier.height(4.dp))
