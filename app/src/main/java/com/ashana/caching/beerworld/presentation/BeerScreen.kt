@@ -20,13 +20,13 @@ import com.ashana.caching.beerworld.data.remote.domain.Beer
 
 @Composable
 fun BeerScreen(
-    beers: LazyPagingItems<Beer>
+    beer: LazyPagingItems<Beer>
 ) {
     val context = LocalContext.current
-    LaunchedEffect(key1 = beers.loadState) {
-        if (beers.loadState.refresh is LoadState.Error) {
+    LaunchedEffect(key1 = beer.loadState) {
+        if (beer.loadState.refresh is LoadState.Error) {
             Toast.makeText(
-                context, "Error! ${(beers.loadState.refresh as LoadState.Error).error.message}",
+                context, "Error! ${(beer.loadState.refresh as LoadState.Error).error.message}",
                 Toast.LENGTH_LONG
             ).show()
         }
