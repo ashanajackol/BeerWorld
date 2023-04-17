@@ -8,8 +8,10 @@ import androidx.room.withTransaction
 import com.ashana.caching.beerworld.data.remote.local.BeerDataBase
 import com.ashana.caching.beerworld.data.remote.local.BeerEntity
 import com.ashana.caching.beerworld.data.remote.mapper.toBeerEntity
+import kotlinx.coroutines.delay
 import retrofit2.HttpException
 import java.io.IOException
+import kotlin.time.Duration.Companion.milliseconds
 
 @OptIn(ExperimentalPagingApi::class)
 class BeerRemoteMediator(
@@ -37,6 +39,7 @@ class BeerRemoteMediator(
                 }
             }
 
+            delay(2000.milliseconds)// just to see the progress indicator
             val beers = beerAPI.getBeers(
                 page = loadKey,
                 pageCount = state.config.pageSize

@@ -1,15 +1,6 @@
 package com.ashana.caching.beerworld.presentation
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -35,7 +26,7 @@ fun BeerItem(
         elevation = 4.dp
     ) {
         Row(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .height(IntrinsicSize.Max)
                 .padding(16.dp)
@@ -43,13 +34,13 @@ fun BeerItem(
             AsyncImage(
                 model = beer.imageUrl,
                 contentDescription = beer.name,
-                modifier = modifier
-                    .height(150.dp)
+                modifier = Modifier
                     .weight(1f)
+                    .height(150.dp)
             )
-            Spacer(modifier = modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(16.dp))
             Column(
-                modifier = modifier
+                modifier = Modifier
                     .weight(3f)
                     .fillMaxHeight(),
                 verticalArrangement = Arrangement.Center
@@ -57,44 +48,46 @@ fun BeerItem(
                 Text(
                     text = beer.name,
                     style = MaterialTheme.typography.h6,
-                    modifier = modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth()
                 )
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = beer.tagLine,
+                    text = beer.tagline,
                     fontStyle = FontStyle.Italic,
                     color = Color.LightGray,
-                    modifier = modifier
+                    modifier = Modifier.fillMaxWidth()
                 )
-                Spacer(modifier = modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = beer.description,
-                    style = MaterialTheme.typography.h6,
-                    fontSize = 14.sp,
-                    modifier = modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth()
                 )
-                Spacer(modifier = modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "First brewed in ${beer.firstBrewed}",
-                    fontSize = 8.sp,
+                    modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.End,
-                    modifier = modifier.fillMaxWidth()
+                    fontSize = 8.sp
                 )
             }
         }
     }
 }
 
-@Composable
 @Preview
+@Composable
 fun BeerItemPreview() {
-    BeerWorldTheme {
-        BeerItem(beer = Beer(
-            id = 1,
-            name = "Lion",
-            tagLine = "This is a tag line",
-            firstBrewed = "27/07/2023",
-            description = "This suppose to be a description!",
-            imageUrl = null
-        ))
+    BeerWorldTheme() {
+        BeerItem(
+            beer = Beer(
+                id = 1,
+                name = "Beer",
+                tagline = "This is a cool beer",
+                firstBrewed = "07/2023",
+                description = "This is a description for a beer. \nThis is the next line.",
+                imageUrl = null
+            ),
+            modifier = Modifier.fillMaxWidth()
+        )
     }
 }
